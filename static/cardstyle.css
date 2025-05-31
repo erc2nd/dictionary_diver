@@ -1,0 +1,36 @@
+main {
+    display: flex;
+    justify-content: center;
+}
+
+#flashcard-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 13px;
+    box-shadow: 7px 6px 13px 0px rgba(0,0,0,0.2);
+    overflow: hidden;
+    border-color: #000000;
+    width: 50%;
+    height:auto;
+    padding: 2rem;
+    margin-top: 5vh;
+}
+
+#card-word {
+    font-size: 3rem;
+}
+
+.kana-displayed {
+    font-size: 2rem;
+    font-style: italic;
+}
+
+.card-def {
+    font-size: 1rem;
+    margin-top: 2vh;
+}
+
+button {
+    margin-top: 3vh;
+}
+

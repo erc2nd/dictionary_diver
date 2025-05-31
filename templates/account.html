@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block main %}
+    <h3>Change Password</h3>
+    {% if pw == "pw" %}
+    <h4><i>Password changed successfully!</i></h4>
+    {% endif %}
+    <form action="/account" method="post">
+        <p>Current password:</p>
+        <input name="old_password" placeholder="Current Password" type="password" />
+        <p>New password:</p>
+        <input name="new_password" placeholder="New Password" type="password" />
+        <p>Confirm new password:</p>
+        <input name="confirm_password" placeholder="Confirm new Password" type="password" />
+        <br>
+        <input name="account_action" value="change_pw" type="hidden" />
+        <button type="submit"> Confirm</button>
+    </form>
+
+    <br><hr><br>
+    <h3>Export Words as CSV</h3>
+    <form action="/export" method="POST">
+        <button name="export" type="submit" value="export">Export</button>
+    </form>
+
+    <br><hr><br>
+
+    <form action="/import_file" method="POST" enctype="multipart/form-data">
+        <h3>Import known words</h3>
+        <h4>Instructions:</h4>
+        <p>Upload a CSV file that is a list of all the words you know in your target lanugage.</p>
+        <p>Each line should have one word on it.</p>
+        <input name="file" type="file" accept=".csv"/>
+        <button name="submit" type="submit" value="submit">Import</button>
+    </form>
+
+    <br><hr><br>
+
+    <h1 style="color:red">Danger Zone!</h1>
+    <br>
+
+    <button popovertarget="reset_known">Reset "Known Words"</button>
+    <div popover id="reset_known">
+        <p>Warning! This will erase all your known words! This is non-reversible!</p>
+        <button onclick="reset_progress('known', 'reset_known')">Reset "Known Words"</button>
+    </div>
+    <br>
+    <button popovertarget="reset_flash">Reset Flash Cards</button>
+    <div popover id="reset_flash">
+        <p>Warning! This will completely erase all your flash cards! This is non-reversible!</p>
+        <button onclick="reset_progress('flash', 'reset_flash')">Reset flash cards</button>
+    </div>
+    <br>
+    <button popovertarget="reset_all">Reset All Progress</button>
+    <div popover id="reset_all">
+        <p>Warning! This will erase all your progress! That means all known words and all flash cards! This is non-reversible!</p>
+        <button onclick="reset_progress('all', 'reset_all')">Reset ALL progress</button>
+    </div>
+
+{% endblock %}

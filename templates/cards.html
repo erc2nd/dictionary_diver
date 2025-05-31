@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block cardstyle %}
+<link href="/static/cardstyle.css" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+    <div id="flashcard-container">
+        <div id="card-word">{{card.word}}</div>
+
+        {{ definition | safe }}
+
+        {% if display == "front" %}
+        <form action="/cards" method="post">
+            <button id="btn-reveal" name="card-action" value="reveal">Reveal</button>
+        </form>
+
+        {% elif display == "back" %}
+        <form action="/cards" method="post">
+            <button id="btn-correct" name="card-action" value="correct" >Correct</button>
+            <button id="btn-wrong" name="card-action" value="wrong" >Wrong</button>
+        </form>
+
+        {% elif display == "no-cards" %}
+
+        <div>No cards to display</div>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}
